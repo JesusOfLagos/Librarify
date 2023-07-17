@@ -132,4 +132,4 @@
  console.log(mainLib);
  
  mainLib.addBook("Singles don't do that");
- console.log(mainLib)
+ console.log(`mainLib + " " + "Completed"`)
