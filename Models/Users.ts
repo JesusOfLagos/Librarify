@@ -13,6 +13,6 @@ class Users {
     }
 
     get fullName() {
-        return this.firstName
+        return `${this.firstName} + " " + ${this.lastName}`
     }
 }
