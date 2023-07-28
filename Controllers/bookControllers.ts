@@ -3,27 +3,27 @@
 import express, { Request, Response } from 'express';
 
 const Books = [
-    { id: 1, name: 'Product 1', price: 10.99 },
-    { id: 2, name: 'Product 2', price: 15.99 },
-    { id: 3, name: 'Product 3', price: 20.99 },
+    { id: 1, name: 'Book 1', price: 10.99 },
+    { id: 2, name: 'Book 2', price: 15.99 },
+    { id: 3, name: 'Book 3', price: 20.99 },
   ];
 
 
-// Get all products
+// Get all Books
 
 async function GetAllBooks (req: Request, res: Response) {
-    res.json(Products);
+    res.json(Books);
   }
   
-  // Get product by ID
+  // Get Book by ID
 async function GetBookByID (req: Request, res: Response) {
     const id = parseInt(req.params.id, 10);
-    const product = Products.find((p) => p.id === id);
+    const book = Books.find((p) => p.id === id);
   
-    if (product) {
-      res.json(product);
+    if (book) {
+      res.json(book);
     } else {
-      res.status(404).json({ message: 'Product not found' });
+      res.status(404).json({ message: 'Book not found' });
     }
   }
   
