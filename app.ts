@@ -26,13 +26,11 @@ app.use(bodyParser.json());
     private bookName: string;
     private bookAuthors: Authors;
     private quantity: string;
-    private category: Category;
     private datePublished: Date;
-    constructor(bookName: string, bookAuthors: Authors, quantity: string, category: Category, datePublished: Date){
+    constructor(bookName: string, bookAuthors: Authors, quantity: string, datePublished: Date){
         this.bookAuthors = bookAuthors;
         this.bookName = bookName;
         this.quantity = quantity;
-        this.category = category;
         this.datePublished = datePublished;
     }
 
@@ -42,26 +40,24 @@ app.use(bodyParser.json());
      private firstName: string;
      private lastName: string;
      private email: string;
-     private gender: Gender;
      private phoneNum: string;
  
-     constructor(firstName: string, lastName: string, email: string, gender: Gender, phoneNum: string){
+     constructor(firstName: string, lastName: string, email: string, phoneNum: string){
          this.firstName = firstName;
          this.lastName = lastName;
          this.email = email;
-         this.gender = gender;
          this.phoneNum = phoneNum;
      }
  
  
-     get fullName(): string{
-         if(this.gender === "MALE"){
-             return `Mr. ${this.firstName} - ${this.lastName}`;
-         }else{
-             return `Mrs. ${this.firstName} - ${this.lastName}`;
-         }
+    //  get fullName(): string{
+    //      if(this.gender === "MALE"){
+    //          return `Mr. ${this.firstName} - ${this.lastName}`;
+    //      }else{
+    //          return `Mrs. ${this.firstName} - ${this.lastName}`;
+    //      }
        
-     }
+    //  }
  }
  
  
@@ -93,15 +89,15 @@ app.use(bodyParser.json());
  
      }
  
-     addBook(name: string){
-         this.books.push(name)
+     addBook(book: Books){
+         this.books.push(book)
      }
  
      get libraryName(): string{
          return this.name;
      }
  
-     get libraryBooks(): string[]{
+     get libraryBooks(): Books[]{
          return this.books;
          
      }
@@ -115,11 +111,13 @@ app.use(bodyParser.json());
  
  
  const mainLib = new Library("Main");
+ const David = new Authors('david', 'mark', 'test@david.com', '123445')
  
- const olaide = new Librarian('olaide', 'ojuolape', 'ojuolapeolaide92@gmail.com', "FEMALE", "+23429299269");
- const hanif = new Librarian('hanif', 'kanif ', 'hanif@gmail.com', "MALE", "+23429299269");
- const gwen = new Librarian('gwen', 'ochayan', 'gwen@gmail.com', "FEMALE", "+23429299269");
- const olympia = new Librarian('olympia', 'the great', 'olympia@gmail.com', "FEMALE", "+23429299269");
+ const olaide = new Librarian('olaide', 'ojuolape', 'ojuolapeolaide92@gmail.com', "+23429299269");
+ const hanif = new Librarian('hanif', 'kanif ', 'hanif@gmail.com', "+23429299269");
+ const gwen = new Librarian('gwen', 'ochayan', 'gwen@gmail.com', "+23429299269");
+ const olympia = new Librarian('olympia', 'the great', 'olympia@gmail.com', "+23429299269");
+ const Book1 = new Books('made by me', David, '2', new Date)
  
  
  
@@ -131,5 +129,5 @@ app.use(bodyParser.json());
  mainLib.assignLibrarian(olaide);
  console.log(mainLib);
  
- mainLib.addBook("Singles don't do that");
+ mainLib.addBook(Book1);
  console.log(`mainLib + " " + "Completed"`)
