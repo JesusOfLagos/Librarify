@@ -1,13 +1,13 @@
-/** LIBRARY SYSTEM
- ** Implement the Book feature
- ** Implement the Author feature 
- */ 
+
+import express from 'express';
+import bodyParser from 'body-parser';
+
+const app = express();
+
+app.use(bodyParser.json());
 
 
 
- type Gender = "MALE" | "FEMALE";
- type Category = "Non-Fiction" | "Fiction" | "Mystery" | "Romance";
-//  type Authors = string[];
 
  class Authors {
     private authorFirstName: string;
