@@ -7,6 +7,7 @@ import Users from "../Models/Users";
 import { LoginValidator, RegisterValidator } from "../Validators/userValidators";
 // import jwt from "jsonwebtoken";
 import { config as dotenvConfig } from "dotenv";
+import path from "path";
 
 dotenvConfig();
 
@@ -21,7 +22,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "Profile-Pictures",
+    folder: "Librarify-Profile-Pictures",
     allowed_formats: ["jpg", "jpeg", "png"],
     transformation: [{ width: 150, height: 150, crop: "thumb", gravity: "face" }],
   },
@@ -38,7 +39,7 @@ async function CreateUser(req: Request, res: Response) {
     return res.status(400).json({ message: "Please provide a valid image file" });
   }
 
-  const imageUrl = req.file.path;
+  const imageUrl = req.file.path
   const result = await cloudinary.uploader.upload(imageUrl, { folder: "Profile-Pictures" });
 
   if (!isValid) {
@@ -134,8 +135,27 @@ async function Logout(req: Request, res: Response) {
   });
 }
 
+
+// Get All Users
+async function GetUser(req: Request, res: Response<Users[]>) {
+    try {
+      console.log(req.params._id);
+      const user = await Users.findById(req.params._id);
+  
+      if (!user) {
+        return res.status(404).json({ message: "User not found", success: false });
+      }
+  
+      res.json({ user, success: true });
+    } catch (error) {
+      res.status(500).json({ success: false, message: error.message });
+    }
+  }
+
+
+
 // Get A User By Id
-async function GetUser(req: Request, res: Response) {
+async function GetAllUsers(req: Request, res: Response) {
   try {
     console.log(req.params._id);
     const user = await Users.findById(req.params._id);
