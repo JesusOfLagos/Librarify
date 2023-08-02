@@ -10,3 +10,5 @@ class Authors {
         this.authorPhoneNumber = authorPhoneNumber;
     }
  }
+
+ module.exports = Authors
