@@ -23,9 +23,28 @@ module.exports.LoginValidator = (data) => {
     }
 }
 
-
+// AnalyserNode
 module.exports.RegisterValidator = (data) => {
-    const errors = {}
+
+    // interface errors {
+    //     email: string,
+    //     password: string,
+    //     firstName: string
+    // }
+    // class userValidationErrors implements errors {
+
+    // }
+
+    class errors {
+        public email : string
+        public password : string
+        public firstName : string
+        constructor (email : string, password : string, firstName : string) {
+            this.email = email
+            this.password = password
+            this.firstName = firstName
+        }
+    }
 
     data.email = !(isEmpty(data.email)) ? data.email : "";
     data.password = !(isEmpty(data.password)) ? data.password : "";
@@ -42,7 +61,7 @@ module.exports.RegisterValidator = (data) => {
     if (firstNameError || lastNameError) errors.firstName = "Full name is required";
 
     return{
-        errors,
+        Errors: errors,
         isValid: isEmpty(errors)
     }
 }
