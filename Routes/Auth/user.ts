@@ -1,6 +1,6 @@
 import { Router } from "express"
 const router = Router()
-import { CreateUser, GetAllUsers, GetUser, EditProfilePicture, EditUserName, LoginUser, Logout, ResetPassword, ForgotPassword } from "../Controllers/userControllers"
+import { CreateUser, GetAllUsers, GetUser, EditProfilePicture, EditUserName, LoginUser, Logout, ResetPassword, ForgotPassword } from "../../Controllers/Auth/userControllers"
 
 
 router.post('/create-user', CreateUser)

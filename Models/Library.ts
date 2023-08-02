@@ -17,7 +17,7 @@
         return this.librarians;
     }
 
-    addBooks(books: Books[]){
+    addBooks(books: Books){
         this.books.push(books);
         return this.books;
     }
@@ -39,7 +39,7 @@
     }
 
     getbooksById(id: string) {
-        return this.books.includes(id)
+        return this.books
     }
 }
 
