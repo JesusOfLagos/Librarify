@@ -1,9 +1,9 @@
 
- 
+const Books = require("../Models/Books")
  class Library {
     private name: string;
-    private books: Array<Books>; //TODO
-    private librarians: Librarian []; //TODO
+    private books: Books[]; //TODO
+    private librarians: Librarian[]; //TODO
 
     constructor(name: string){
         this.name = name;

@@ -196,4 +196,18 @@ async function EditProfilePicture(req: Request, res: Response) {
   }
 }
 
-export { CreateUser, LoginUser, GetUser, GetAllUsers, Logout, EditUserName, EditProfilePicture };
+
+async function ForgotPassword(params:type) {
+    
+}
+
+
+
+
+async function ResetPassword(params:type) {
+    
+}
+
+
+
+export { CreateUser, LoginUser, GetUser, GetAllUsers, Logout, EditUserName, EditProfilePicture, ForgotPassword, ResetPassword };
