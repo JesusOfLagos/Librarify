@@ -1,5 +1,4 @@
 
-const Books = require("../Models/Books")
  class Library {
     private name: string;
     private books: Books[]; //TODO
@@ -16,12 +15,11 @@ const Books = require("../Models/Books")
     assignLibrarian(librarian: Librarian){
         this.librarians.push(librarian);
         return this.librarians;
-
-
     }
 
-    addBooks(){
-
+    addBooks(books: Books[]){
+        this.books.push(books);
+        return this.books;
     }
 
     addBook(book: Books){
@@ -33,15 +31,16 @@ const Books = require("../Models/Books")
     }
 
     get libraryBooks(): Books[]{
-        return this.books;
-        
+        return this.books;   
     }
 
     get librariansName(){
-        return this.librarians;
+        return this.librarians
     }
 
-
+    getbooksById(id: string) {
+        return this.books.includes(id)
+    }
 }
 
 
