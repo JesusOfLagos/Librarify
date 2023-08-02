@@ -101,21 +101,6 @@ async function LoginUser(req: Request, res: Response) {
               session: req.session,
               success: true,
             });
-            // const payload = {
-            //     id: user._id,
-            //     name: user.firstName
-            // }
-            // jwt.sign(
-            //     payload,
-            //     process.env.APP_SECRET, {expiresIn: 2155926},
-            //     (err, token) => {
-            //         res.json({
-            //             user,
-            //             token: `Bearer Token: ` + token,
-            //             success: true
-            //         })
-            //     }
-            // )
           }
         });
       }
@@ -211,4 +196,4 @@ async function EditProfilePicture(req: Request, res: Response) {
   }
 }
 
-export { CreateUser, LoginUser, GetUser, Logout, EditUserName, EditProfilePicture };
+export { CreateUser, LoginUser, GetUser, GetAllUsers, Logout, EditUserName, EditProfilePicture };
