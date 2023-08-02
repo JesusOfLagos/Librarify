@@ -1,8 +1,4 @@
 
- import Books from "./Books"
- import Librarian from "./Librarians"
-
- 
  
  class Library {
     private name: string;
@@ -47,3 +43,6 @@
 
 
 }
+
+
+module.exports = Library

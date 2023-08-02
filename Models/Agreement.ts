@@ -20,3 +20,5 @@ class Agreement {
         this.note = note;
     }
  }
+
+ module.exports = Agreement

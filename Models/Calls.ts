@@ -18,3 +18,5 @@ class Calls {
         this.duration = duration
     }
  }
+
+ module.exports = Calls

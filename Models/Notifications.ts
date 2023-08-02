@@ -16,3 +16,6 @@ class Notifications {
         this.isRead = isRead;
     }
  }
+
+
+ module.exports = Notifications

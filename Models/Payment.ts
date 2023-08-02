@@ -18,3 +18,5 @@ class Payment {
         this.duration = duration
     }
  }
+
+ module.exports = Payment

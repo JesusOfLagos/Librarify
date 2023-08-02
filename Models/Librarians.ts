@@ -22,3 +22,6 @@ class Librarian {
         }
     }
 }
+
+
+module.exports = Librarian
