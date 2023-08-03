@@ -3,11 +3,12 @@ import bcrypt from "bcrypt";
 import multer from "multer";
 import cloudinary from "cloudinary";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
-import Users from "../../Models/Users";
-import { LoginValidator, RegisterValidator } from "../Validators/userValidators";
-// import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
 import { config as dotenvConfig } from "dotenv";
 import path from "path";
+import { LoginValidator, RegisterValidator } from "../../Validators/Users/validators"
+
+
 
 dotenvConfig();
 

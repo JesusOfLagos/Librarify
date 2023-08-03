@@ -4,8 +4,13 @@ import isEmpty from 'is-empty'
 import validator from 'validator'
 
 
-module.exports.LoginValidator = (data) => {
-    const errors = {};
+function LoginValidator (data)  {
+    const errors = {
+        email: '',
+        password: '',
+        firstName: ''
+    }
+
 
     data.email = !(isEmpty(data.email)) ? data.email : "";
     data.password = !(isEmpty(data.password)) ? data.password : "";
@@ -24,7 +29,7 @@ module.exports.LoginValidator = (data) => {
 }
 
 // AnalyserNode
-module.exports.RegisterValidator = (data) => {
+function RegisterValidator (data) {
 
     // interface errors {
     //     email: string,
@@ -35,15 +40,21 @@ module.exports.RegisterValidator = (data) => {
 
     // }
 
-    class errors {
-        public email : string
-        public password : string
-        public firstName : string
-        constructor (email : string, password : string, firstName : string) {
-            this.email = email
-            this.password = password
-            this.firstName = firstName
-        }
+    // class errors {
+    //     public email : string
+    //     public password : string
+    //     public firstName : string
+    //     constructor (email : string, password : string, firstName : string) {
+    //         this.email = email
+    //         this.password = password
+    //         this.firstName = firstName
+    //     }
+    // }
+
+    const errors = {
+        email: '',
+        password: '',
+        firstName: ''
     }
 
     data.email = !(isEmpty(data.email)) ? data.email : "";
@@ -61,10 +72,10 @@ module.exports.RegisterValidator = (data) => {
     if (firstNameError || lastNameError) errors.firstName = "Full name is required";
 
     return{
-        Errors: errors,
+        errors,
         isValid: isEmpty(errors)
     }
 }
 
 
-
+module.exports = LoginValidator
