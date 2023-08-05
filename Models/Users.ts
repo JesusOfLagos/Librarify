@@ -5,7 +5,7 @@ class Users {
     private email: string;
     private gender: string;
 
-    constructor(firstName, lastName, email, gender){
+    constructor(firstName: string, lastName: string, email: string, gender: string){
         this.email = email;
         this.gender = gender;
         this.lastName = lastName;
