@@ -17,7 +17,16 @@ dotenvConfig();
 
 
 async function Hello (req: Request, res: Response) {
-  res.json("Hello World")
+
+  const data: number = 1
+
+  if (data === 1) {
+    res.json(`data: ${data}`)
+  } else {
+    res.json("Error, no data!")
+  }
+ 
+  
 }
 
 // module.exports = Hello

@@ -21,7 +21,8 @@ dotenv.config();
 
 
 // ... Rest of the code ...
-;
+const UserRoutes = require('./Routes/Auth/user')
+
 
 // Import routes
 // import UserRoutes from './Routes/users';
@@ -49,7 +50,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Use routes
-// app.use('/', UserRoutes);
+app.use('/', UserRoutes);
 // app.use('/', MessagesRoutes);
 
 // Connect to the database
