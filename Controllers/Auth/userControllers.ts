@@ -19,9 +19,10 @@ dotenvConfig();
 async function Hello (req: Request, res: Response) {
 
   const data: number = 1
+  const date = "January"
 
   if (data === 1) {
-    res.json(`data: ${data}`)
+    res.json(`data: ${data + date}`)
   } else {
     res.json("Error, no data!")
   }
