@@ -2,11 +2,11 @@ import { Router } from "express"
 const router = Router()
 // import { CreateUser, GetAllUsers, GetUser, EditProfilePicture, EditUserName, LoginUser, Logout, ResetPassword, ForgotPassword } from "../../Controllers/Auth/userControllers"
 
-import { Hello } from '../../Controllers/Auth/userControllers'
+import { Hello, List } from '../../Controllers/Auth/userControllers'
 
 
 router.post('/create-user', Hello)
-// router.post('/create-user', LoginUser)
+router.post('/create-list', List)
 // router.post('/create-user', Logout)
 // router.post('/create-user', CreateUser)
 // router.get('/create-user', GetAllUsers)

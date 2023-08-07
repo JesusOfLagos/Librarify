@@ -102,3 +102,6 @@ function main() {
 
 
 main()
+
+
+export {LinkedList}

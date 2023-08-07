@@ -7,31 +7,22 @@ import { connect } from 'mongoose';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
-// import bodyParser from 'body-parser';
-// const session = require('express-session');
-// const cors = require('cors');
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
 import passport from 'passport';
 import socketio, { Server as SocketIOServer, Socket } from 'socket.io';
-
 import env from 'dotenv';
 import http from 'http';
 import dotenv from 'dotenv';
 dotenv.config();
 
-
-// ... Rest of the code ...
-const UserRoutes = require('./Routes/Auth/user')
-
-
 // Import routes
-// import UserRoutes from './Routes/users';
-// import MessagesRoutes from './Routes/messages';
+const UserRoutes = require('./Routes/Auth/user')
+// const BookRoutes = require("./Routes/Services/book")
+
 
 // Create express app
 const app: Application = express();
 const server: http.Server = http.createServer(app);
-// const io: SocketIOServer = socketio(server);
 const io: SocketIOServer = new SocketIOServer(server);
 
 
@@ -51,13 +42,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Use routes
 app.use('/', UserRoutes);
-// app.use('/', MessagesRoutes);
+// app.use('/', BookRoutes);
 
-// Connect to the database
-// Import dotenv config
-
-
-// ... Other imports and middleware ...
 
 // Connect to the database
 async function connectToDB() {
@@ -76,7 +62,7 @@ connectToDB();
 
 
 // Port
-const port: number = Number(process.env.PORT) || 8090;
+const port: number = Number(process.env.PORT) || 8000;
 
 
 

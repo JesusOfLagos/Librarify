@@ -78,4 +78,4 @@ function RegisterValidator (data) {
 }
 
 
-module.exports = LoginValidator
+export {LoginValidator, RegisterValidator}

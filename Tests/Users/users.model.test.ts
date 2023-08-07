@@ -1,4 +1,4 @@
-import Users from './Users';
+import { Users } from "../../Models/Users";
 
 describe('Users class', () => {
   // Test the constructor
@@ -8,10 +8,11 @@ describe('Users class', () => {
     expect(user.firstName).toBe('John');
     expect(user.lastName).toBe('Doe');
     expect(user.email).toBe('john@example.com');
-    expect(user.gender).toBe('male');
+    expect(user.password).toBe('male');
   });
 
   // Test the fullName getter
+  // and come home for dinner
   test('should return the full name of the user', () => {
     const user = new Users('John', 'Doe', 'john@example.com', 'male');
     expect(user.fullName).toBe('John Doe');

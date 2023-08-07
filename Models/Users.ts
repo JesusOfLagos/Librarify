@@ -1,13 +1,13 @@
 
 class Users {
-    private firstName: string;
-    private lastName: string;
-    private email: string;
-    private gender: string;
+    public firstName: string;
+    public lastName: string;
+    public email: string;
+    public password: string;
 
-    constructor(firstName: string, lastName: string, email: string, gender: string){
+    constructor(firstName: string, lastName: string, email: string, password: string){
         this.email = email;
-        this.gender = gender;
+        this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
     }
@@ -17,4 +17,4 @@ class Users {
     }
 }
 
-module.exports = Users
+export{Users}
