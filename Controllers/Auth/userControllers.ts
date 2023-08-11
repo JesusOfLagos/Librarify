@@ -33,30 +33,13 @@ async function Hello (req: Request, res: Response) {
   res.json({success: true, NewUsers})
 } else {
   res.json({message: "Oops, an error occured!", NewUsers})
-}
- 
-  // const NewUsers = new Users( "firstName", "lastName","email","gender" )
-  // const NewUsers = new Users( req.body.firstName, req.body.lastName, req.body.email, req.body.gender)
-
-
-
-  // const Male = {
-  //   name: "jesus"
-  // }
-
-  // if (data === 1) {
-  //   // res.json(`data: ${Male}`)
-  //   res.json(NewUsers)
-
- 
-  
+} 
 }
 
-// module.exports = Hello
 
 
 
-async function List (rreq: Request, res: Response) {
+async function List (req: Request, res: Response) {
 
 function main() {
   const list = new LinkedList();

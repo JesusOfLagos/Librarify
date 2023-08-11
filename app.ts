@@ -18,7 +18,11 @@ dotenv.config();
 // Import routes
 const UserRoutes = require('./Routes/Auth/user')
 // const BookRoutes = require("./Routes/Services/book")
-
+// class name {
+//   constructor(parameters) {
+    
+//   }
+// }
 
 // Create express app
 const app: Application = express();
@@ -29,7 +33,7 @@ const io: SocketIOServer = new SocketIOServer(server);
 // Middleware
 app.use(express.json());
 // app.use(morgan('dev'));
-app.use(cors({ origin: 'https://localhost:5000', credentials: true }));
+// app.use(cors({ origin: 'https://localhost:5000', credentials: true }));
 app.use(
   session({
     secret: 'my-secret',
@@ -67,11 +71,11 @@ const port: number = Number(process.env.PORT) || 8000;
 
 
 // Socket.IO connection handling
-io.on('connection', (socket: Socket) => {
-    console.log('A user connected');
+// io.on('connection', (socket: Socket) => {
+//     console.log('A user connected');
   
-    // ... (rest of your socket.io code)
-  });
+//     // ... (rest of your socket.io code)
+//   });
   
   // Listener
   server.listen(port, () => {

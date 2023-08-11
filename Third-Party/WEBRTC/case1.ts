@@ -68,8 +68,8 @@ async function createPeerConnection(): Promise<RTCPeerConnection> {
 
   peerConnection.onicecandidate = (event) => {
     if (event.candidate) {
-      // Send the ICE candidate to the remote peer using your P2P signaling method
-      // (implement this part in your backend or P2P signaling library)
+      // Send the ICE candidate to the remote peer using the P2P signaling method
+      // (implement this part in the backend or P2P signaling library)
     }
   };
 

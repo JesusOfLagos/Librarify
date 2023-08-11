@@ -6,7 +6,7 @@ import { Hello, List } from '../../Controllers/Auth/userControllers'
 
 
 router.post('/create-user', Hello)
-router.post('/create-list', List)
+// router.post('/create-list', List)
 // router.post('/create-user', Logout)
 // router.post('/create-user', CreateUser)
 // router.get('/create-user', GetAllUsers)
