@@ -1,5 +1,4 @@
 
-
 // Import modules
 import session from 'express-session';
 import express, { Application, Request, Response } from 'express';
@@ -8,32 +7,25 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 import bodyParser from 'body-parser';
+import UserRoutes from './Routes/Auth/user';
 import passport from 'passport';
 import socketio, { Server as SocketIOServer, Socket } from 'socket.io';
 import env from 'dotenv';
 import http from 'http';
 import dotenv from 'dotenv';
 dotenv.config();
-
 // Import routes
-const UserRoutes = require('./Routes/Auth/user')
-// const BookRoutes = require("./Routes/Services/book")
-// class name {
-//   constructor(parameters) {
-    
-//   }
-// }
-
+console.log(process.env.MONGO_URI)
 // Create express app
 const app: Application = express();
-const server: http.Server = http.createServer(app);
-const io: SocketIOServer = new SocketIOServer(server);
+// const server: http.Server = http.createServer(app);
+// const io: SocketIOServer = new SocketIOServer(server);
 
 
 // Middleware
 app.use(express.json());
 // app.use(morgan('dev'));
-// app.use(cors({ origin: 'https://localhost:5000', credentials: true }));
+app.use(cors({ origin: 'https://localhost:5000', credentials: true }));
 app.use(
   session({
     secret: 'my-secret',
@@ -41,6 +33,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -59,30 +52,16 @@ async function connectToDB() {
       console.error('Oops!, an error occurred!', err);
     }
   }
-  
-
-// Call the connectToDB function
-connectToDB();
-
 
 // Port
-const port: number = Number(process.env.PORT) || 8000;
+const port = process.env.PORT || 8000;
 
-
-
-// Socket.IO connection handling
-// io.on('connection', (socket: Socket) => {
-//     console.log('A user connected');
-  
-//     // ... (rest of your socket.io code)
-//   });
   
   // Listener
-  server.listen(port, () => {
-    // if (err) {
-    //   console.log(err);
-    // }
+
+  app.listen(port, () => {
     console.log(`Server Is Running on Port ${port}`);
   });
 
+  connectToDB();
 

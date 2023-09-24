@@ -1,11 +1,11 @@
 import { Router } from "express"
-const router = Router()
+const UserRouter = Router()
 // import { CreateUser, GetAllUsers, GetUser, EditProfilePicture, EditUserName, LoginUser, Logout, ResetPassword, ForgotPassword } from "../../Controllers/Auth/userControllers"
 
 import { Hello, List } from '../../Controllers/Auth/userControllers'
 
 
-router.post('/create-user', Hello)
+UserRouter.post('/create-user', Hello)
 // router.post('/create-list', List)
 // router.post('/create-user', Logout)
 // router.post('/create-user', CreateUser)
@@ -16,4 +16,4 @@ router.post('/create-user', Hello)
 // router.put('/create-user', ResetPassword)
 // router.put('/create-user', ForgotPassword)
 
-module.exports = router
+export default UserRouter
