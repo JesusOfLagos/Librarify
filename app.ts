@@ -1,67 +1,55 @@
+console.log('Hello World')
 
-// Import modules
-import session from 'express-session';
-import express, { Application, Request, Response } from 'express';
-import { connect } from 'mongoose';
-import morgan from 'morgan';
-import cors from 'cors';
-import path from 'path';
-import bodyParser from 'body-parser';
-import UserRoutes from './Routes/Auth/user';
-import passport from 'passport';
-import socketio, { Server as SocketIOServer, Socket } from 'socket.io';
-import env from 'dotenv';
-import http from 'http';
-import dotenv from 'dotenv';
-dotenv.config();
-// Import routes
-console.log(process.env.MONGO_URI)
-// Create express app
-const app: Application = express();
-// const server: http.Server = http.createServer(app);
-// const io: SocketIOServer = new SocketIOServer(server);
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import mongoose from 'mongoose'
+import UserRouter from './Routes/users/user.route'
+import GlobalRouter from './Routes/index.route'
+import LibraryRouter from './Routes/library/library.route'
+dotenv.config()
+
+const app = express()
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'))
+app.use('/api/v1/', GlobalRouter)
+app.use('/api/v1/users', UserRouter)
+app.use('/api/v1/library', LibraryRouter)
+
+app.use((req: any, res: any) => {
+  res.status(404).json({ message: 'You arrived at Librarify, But with the wrong request!😒' });
+});
 
 
-// Middleware
-app.use(express.json());
-// app.use(morgan('dev'));
-app.use(cors({ origin: 'https://localhost:5000', credentials: true }));
-app.use(
-  session({
-    secret: 'my-secret',
-    resave: false,
-    saveUninitialized: true,
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} ${req.ip}`)
+  next()
   })
-);
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Use routes
-app.use('/', UserRoutes);
-// app.use('/', BookRoutes);
 
 
-// Connect to the database
-async function connectToDB() {
-    try {
-      const mongoURI = process.env.MONGO_URI ?? '';
-      await connect(mongoURI, {});
-      console.log('DB Connection was successful');
-    } catch (err) {
-      console.error('Oops!, an error occurred!', err);
-    }
-  }
 
-// Port
-const port = process.env.PORT || 8000;
 
-  
-  // Listener
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`)
+})
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('Connected to MongoDB')
+  })
+  .catch((err) => {
+    console.error('Error connecting to MongoDB:', err)
+  })
 
-  app.listen(port, () => {
-    console.log(`Server Is Running on Port ${port}`);
-  });
 
-  connectToDB();
+
+
+
+
+
+
+
+
 

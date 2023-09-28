@@ -1,4 +1,4 @@
-import { Users } from "../../Models/Users";
+import { Users } from "../../Models/users/Users";
 
 describe('Users class', () => {
   // Test the constructor

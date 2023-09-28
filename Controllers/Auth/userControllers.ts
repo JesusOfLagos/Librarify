@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import { Users } from "../../Models/Users";
+import { Users } from "../../Models/users/Users";
 import { LoginValidator, RegisterValidator } from "../../Validators/Users/validators";
 import multer from "multer";
 import cloudinary from "cloudinary";
