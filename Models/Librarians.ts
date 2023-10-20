@@ -1,27 +1,64 @@
-class Librarian {
-    private firstName: string;
-    private lastName: string;
-    private email: string;
-    private phoneNum: string;
-    private gender: string;
-
-    constructor(firstName: string, lastName: string, email: string, phoneNum: string, gender: string){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNum = phoneNum;
-        this.gender = gender;
-    }
+import { Schema } from 'mongoose';
 
 
-    get fullName(): string{
-        if(this.gender === "MALE"){
-            return `Mr. ${this.firstName} - ${this.lastName}`;
-        }else{
-            return `Mrs. ${this.firstName} - ${this.lastName}`;
-        }
-    }
+export interface Librarian {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+    libraryId: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
+const LibrarianModel = new Schema({
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true },
+    role: { type: String },
+    libraryId: { type: String, required: true }
+}, { timestamps: true })
 
-module.exports = Librarian
+
+export class LibrarianManager implements Librarian {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+    libraryId: string;
+    createdAt: Date;
+    updatedAt: Date;
+
+    constructor(id: string, name: string, email: string, password: string, role: string, libraryId: string, createdAt: Date, updatedAt: Date) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.libraryId = libraryId;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    static createLibrarianInstance = (id: string, name: string, email: string, password: string, role: string, libraryId: string, createdAt: Date, updatedAt: Date): LibrarianManager => {
+        return new LibrarianManager(id, name, email, password, role, libraryId, createdAt, updatedAt);
+    }
+
+    static getLibrarianById(id: string): LibrarianManager {
+        return new LibrarianModel.findById(id);
+    }
+
+    static createLibrarian(librarian: Librarian): LibrarianManager {
+        return new LibrarianModel(librarian.id, librarian.name, librarian.email, librarian.password, librarian.role, librarian.libraryId, librarian.createdAt, librarian.updatedAt).save();
+    }
+
+    static getLibrarianByEmail(email: string): LibrarianManager {
+        return new LibrarianModel.findOne({ email: email });
+    }
+
+    static getLibrarianByLibraryId(libraryId: string): LibrarianManager {
+        return new LibrarianModel.findOne({ libraryId: libraryId });
+    }
+}
