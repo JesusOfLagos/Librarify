@@ -1,6 +1,13 @@
 import exp from "constants";
 import mongoose, { Schema } from "mongoose";
 
+// export interface EXP extends typeof exp {}
+
+export interface ITokenUser {
+    id: string
+    email: string
+    role: string
+}
 
 export interface IUser {
     name: string;
